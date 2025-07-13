@@ -38,6 +38,9 @@ gem "rack-cors"
 # Authentication
 gem "devise"
 gem "devise-jwt"
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"
 
 # Environment variables
 gem "dotenv-rails"
