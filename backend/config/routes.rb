@@ -3,13 +3,17 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  # API routes
+    # API routes
   namespace :api do
     namespace :v1 do
       resources :posts, only: [:index, :show, :create, :update, :destroy]
 
-      # ユーザー投稿一覧用
-      resources :users, only: [] do
+      # Users routes
+      resources :users, only: [:show, :update] do
+        collection do
+          get :me  # 現在のユーザー情報取得
+        end
+        # ユーザー投稿一覧用
         resources :posts, only: [:index]
       end
     end
