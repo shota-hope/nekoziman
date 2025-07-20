@@ -5,6 +5,9 @@ class Post < ApplicationRecord
   validates :description, length: { maximum: 500 }
   validates :public_id, presence: true
 
+  # スコープ（新しい順に表示）
+  scope :recent, -> { order(id: :desc) }
+
   before_destroy :delete_cloudinary_image
 
   def upload_image(file)
